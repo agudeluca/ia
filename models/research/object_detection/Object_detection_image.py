@@ -2,7 +2,7 @@
 #
 # Author: Evan Juras
 # Date: 1/15/18
-# Description: 
+# Description:
 # This program uses a TensorFlow-trained classifier to perform object detection.
 # It loads the classifier uses it to perform object detection on an image.
 # It draws boxes and scores around the objects of interest in the image.
@@ -32,7 +32,7 @@ from utils import visualization_utils as vis_util
 # Name of the directory containing the object detection module we're using
 MODEL_NAME = 'inference_graph'
 #IMAGE_NAME = '11.jpg'
-IMAGE_NAME = 'ch (8).jpg'
+IMAGE_NAME = '2.jpg'
 
 # Grab path to current working directory
 CWD_PATH = os.getcwd()
@@ -97,8 +97,11 @@ image_expanded = np.expand_dims(image, axis=0)
 (boxes, scores, classes, num) = sess.run(
     [detection_boxes, detection_scores, detection_classes, num_detections],
     feed_dict={image_tensor: image_expanded})
+#data processed
 
-# Draw the results of the detection (aka 'visulaize the results')
+data = [category_index.get(value) for index,value in enumerate(classes[0]) if scores[0,index] > 0.9]
+print(data)
+
 
 vis_util.visualize_boxes_and_labels_on_image_array(
     image,
@@ -108,7 +111,7 @@ vis_util.visualize_boxes_and_labels_on_image_array(
     category_index,
     use_normalized_coordinates=True,
     line_thickness=8,
-    min_score_thresh=0.80)
+    min_score_thresh=0.5)
 
 # All the results have been drawn on image. Now display the image.
 cv2.imshow('Object detector', image)
@@ -118,3 +121,4 @@ cv2.waitKey(0)
 
 # Clean up
 cv2.destroyAllWindows()
+
