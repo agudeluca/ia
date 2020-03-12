@@ -2,7 +2,7 @@
 #
 # Author: Evan Juras
 # Date: 1/16/18
-# Description: 
+# Description:
 # This program uses a TensorFlow-trained classifier to perform object detection.
 # It loads the classifier uses it to perform object detection on a video.
 # It draws boxes and scores around the objects of interest in each frame
@@ -32,7 +32,7 @@ from utils import visualization_utils as vis_util
 
 # Name of the directory containing the object detection module we're using
 MODEL_NAME = 'inference_graph'
-VIDEO_NAME = 'chinook3_Trim.mp4'
+VIDEO_NAME = 'VID_20200310_185630.mp4'
 
 # Grab path to current working directory
 CWD_PATH = os.getcwd()
@@ -48,7 +48,7 @@ PATH_TO_LABELS = os.path.join(CWD_PATH,'training','labelmap.pbtxt')
 PATH_TO_VIDEO = os.path.join(CWD_PATH,VIDEO_NAME)
 
 # Number of classes the object detector can identify
-NUM_CLASSES = 1
+NUM_CLASSES = 3
 
 # Load the label map.
 # Label maps map indices to category names, so that when our convolution
@@ -97,7 +97,7 @@ while(video.isOpened()):
     # i.e. a single-column array, where each item in the column has the pixel RGB value
     ret, frame = video.read()
     if ret==True:
-        
+
         frame_expanded = np.expand_dims(frame, axis=0)
 
         # Perform the actual detection by running the model with the image as input

@@ -1,26 +1,26 @@
 <annotation>
-	<folder>chinook_jpg</folder>
+	<folder>train</folder>
 	<filename>78.jpg</filename>
-	<path>F:\chinook_jpg\78.jpg</path>
+	<path>C:\Users\agust\Documents\ia\models\research\object_detection\images\train\78.jpg</path>
 	<source>
 		<database>Unknown</database>
 	</source>
 	<size>
-		<width>800</width>
-		<height>533</height>
+		<width>3840</width>
+		<height>2160</height>
 		<depth>3</depth>
 	</size>
 	<segmented>0</segmented>
 	<object>
-		<name>chinook</name>
+		<name>polenta presto pronta 750g</name>
 		<pose>Unspecified</pose>
-		<truncated>1</truncated>
+		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>1</xmin>
-			<ymin>78</ymin>
-			<xmax>794</xmax>
-			<ymax>390</ymax>
+			<xmin>573</xmin>
+			<ymin>195</ymin>
+			<xmax>2876</xmax>
+			<ymax>2120</ymax>
 		</bndbox>
 	</object>
 </annotation>

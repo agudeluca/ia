@@ -29,8 +29,12 @@ FLAGS = flags.FLAGS
 
 # TO-DO replace this with label map
 def class_text_to_int(row_label):
-    if row_label == 'chinook':
+    if row_label == 'spaguetti matarazzo':
         return 1
+    if row_label == 'polenta presto pronta 750g':
+        return 2
+    if row_label == 'spaguetti canale':
+        return 3
     else:
         return 0
 

@@ -32,8 +32,9 @@ from utils import visualization_utils as vis_util
 # Name of the directory containing the object detection module we're using
 MODEL_NAME = 'inference_graph'
 #IMAGE_NAME = '11.jpg'
-IMAGE_NAME = '2.jpg'
+IMAGE_NAME = '88.jpg'
 
+presicion = 0.8
 # Grab path to current working directory
 CWD_PATH = os.getcwd()
 
@@ -45,10 +46,10 @@ PATH_TO_CKPT = os.path.join(CWD_PATH,MODEL_NAME,'frozen_inference_graph.pb')
 PATH_TO_LABELS = os.path.join(CWD_PATH,'training','labelmap.pbtxt')
 
 # Path to image
-PATH_TO_IMAGE = os.path.join(CWD_PATH,IMAGE_NAME)
+PATH_TO_IMAGE = os.path.join(CWD_PATH,'images','test',IMAGE_NAME)
 
 # Number of classes the object detector can identify
-NUM_CLASSES = 1
+NUM_CLASSES = 3
 
 # Load the label map.
 # Label maps map indices to category names, so that when our convolution
@@ -99,7 +100,7 @@ image_expanded = np.expand_dims(image, axis=0)
     feed_dict={image_tensor: image_expanded})
 #data processed
 
-data = [category_index.get(value) for index,value in enumerate(classes[0]) if scores[0,index] > 0.9]
+data = [category_index.get(value) for index,value in enumerate(classes[0]) if scores[0,index] > presicion]
 print(data)
 
 
@@ -111,7 +112,7 @@ vis_util.visualize_boxes_and_labels_on_image_array(
     category_index,
     use_normalized_coordinates=True,
     line_thickness=8,
-    min_score_thresh=0.5)
+    min_score_thresh=presicion)
 
 # All the results have been drawn on image. Now display the image.
 cv2.imshow('Object detector', image)
